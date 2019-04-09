@@ -1,3 +1,6 @@
+package clases
+
+import mixins.{Luchador, Personaje}
 import scala.util.Random
 
 class Investigador(vidaInicial :Int) extends Personaje with Luchador {
@@ -5,5 +8,9 @@ class Investigador(vidaInicial :Int) extends Personaje with Luchador {
 
   override def danio(): Int = {
     Random.nextInt(this.vida - 1) + 1
+  }
+
+  override def atacar(): Unit = {
+    habitacion.monstruoMasPoderoso().recibirDanio(danio)
   }
 }

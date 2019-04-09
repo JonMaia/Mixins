@@ -1,13 +1,38 @@
+import clases.{Habitacion, Investigador, Monstruo}
 import org.scalatest.{FunSpec, Matchers}
 
 class InvestigadorSpec extends FunSpec with Matchers {
-  describe("Un investigador ataca a un monstruo y le ocaciona danio") {
-    val investigador = new Investigador(10)
-    val monstruo = new Monstruo(20)
+  describe("clases.Investigador.atacar(monstruo)") {
+    it("Un investigador ataca a un monstruo y le ocaciona danio") {
+      val investigador = new Investigador(10)
+      val monstruo = new Monstruo(20)
+      val habitacion = new Habitacion
 
-    investigador.atacar(monstruo)
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(monstruo)
 
-    monstruo.vida < 20 shouldBe(true)
+      investigador.atacar()
+
+      monstruo.vida < 20 shouldBe true
+    }
+
+    it("Un investigador ataca en una habitación con un monstruo y otro investigador y ocaciona danio al monstruo") {
+      val investigador1 = new Investigador(10)
+      val investigador2 = new Investigador(10)
+      val monstruo = new Monstruo(20)
+      val habitacion = new Habitacion
+
+      habitacion.agregarHabitante(investigador1)
+      habitacion.agregarHabitante(investigador2)
+      habitacion.agregarHabitante(monstruo)
+
+      investigador1.atacar()
+
+      investigador1.vida shouldEqual 10
+      investigador2.vida shouldEqual 10
+      monstruo.vida < 20 shouldBe true
+    }
+
 
   }
 
