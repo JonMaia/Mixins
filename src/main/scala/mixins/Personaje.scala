@@ -3,6 +3,7 @@ package mixins
 import clases.Habitacion
 
 trait Personaje {
+
   var vida :Int
   var habitacion :Habitacion = _
 
