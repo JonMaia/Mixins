@@ -33,6 +33,22 @@ class InvestigadorSpec extends FunSpec with Matchers {
       monstruo.vida < 20 shouldBe true
     }
 
+    it("Un investigador es atacado, se muere y es retirado de la habitación"){
+      val investigador = new Investigador(1)
+      val monstruo = new Monstruo(20)
+      val habitacion = new Habitacion
+
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(monstruo)
+
+      habitacion.personajes.size shouldEqual 2
+      habitacion.investigadores().size shouldEqual 1
+
+      monstruo.atacar()
+
+      habitacion.personajes.size shouldEqual 1
+      habitacion.investigadores().size shouldEqual 0
+    }
 
   }
 

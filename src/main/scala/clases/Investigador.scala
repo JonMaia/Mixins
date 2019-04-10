@@ -7,10 +7,10 @@ class Investigador(vidaInicial :Int) extends Personaje with Luchador {
   override var vida: Int = vidaInicial
 
   override def danio(): Int = {
-    Random.nextInt(this.vida - 1) + 1
+    Random.nextInt(vida - 1) + 1
   }
 
   override def atacar(): Unit = {
-    habitacion.monstruoMasPoderoso().recibirDanio(danio)
+    habitacion.monstruoMasPoderoso().recibirDanio(danio())
   }
 }

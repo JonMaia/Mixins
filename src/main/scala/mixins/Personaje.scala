@@ -8,6 +8,14 @@ trait Personaje {
 
   def recibirDanio(danio :Int): Unit = {
     this.vida -= danio
+    if(vida <= 0) {
+      vida = 0
+      habitacion.retirarPersonaje()
+    }
+  }
+
+  def estaMuerto(): Boolean ={
+    vida == 0
   }
 
 }

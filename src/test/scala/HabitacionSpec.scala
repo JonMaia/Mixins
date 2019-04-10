@@ -16,7 +16,7 @@ class HabitacionSpec extends FunSpec with Matchers {
 
   }
 
-  describe("clases.Habitacion.monstruos()")
+  describe("clases.Habitacion.monstruos()") {
 
     it("Agrego dos monstruos en la habitación y un investigador y le pregunto por el size de monstruos y denota 2") {
       val investigador = new Investigador(10)
