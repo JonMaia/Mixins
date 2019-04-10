@@ -75,7 +75,10 @@ class HabitacionSpec extends FunSpec with Matchers {
 
       habitacion.agregarHabitante(monstruo1)
 
-      habitacion.monstruos().size shouldEqual 2
+      habitacion.investigadores().map(investigador => investigador.recibirHorror(monstruo1.horror))
+
+      investigador.getCorduraActual() equals(19)
+      investigador2.getCorduraActual() equals(19)
     }
   }
 }

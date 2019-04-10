@@ -4,6 +4,6 @@ trait Luchador {
 
   def atacar(): Unit
 
-  def danio() :Int
+  def danio(): Int
 
 }
