@@ -27,4 +27,7 @@ class Habitacion {
     personajes = personajes.filterNot(p => p.estaMuerto())
   }
 
+  def investigadorConMenosCordura(): Investigador = {
+    investigadores().minBy(investigador => investigador.corduraActual)
+  }
 }
