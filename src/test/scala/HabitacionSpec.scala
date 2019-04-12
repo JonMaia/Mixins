@@ -1,9 +1,11 @@
 import clases.{Habitacion, Investigador, Monstruo}
-import mixins.Bestia
+import mixins.luchador.Bestia
 import org.scalatest.{FunSpec, Matchers}
 
 class HabitacionSpec extends FunSpec with Matchers {
+
   describe("clases.Habitacion.agregarPersonaje(personaje)") {
+
     it("Agrego dos personajes en la habitación y personajes tiene size 2") {
       val investigador = new Investigador(10, 20)
       val monstruo = new Monstruo(20)
@@ -17,7 +19,7 @@ class HabitacionSpec extends FunSpec with Matchers {
 
   }
 
-  describe("clases.habitacion.monstruos()") {
+  describe("clases.Habitacion.monstruos()") {
 
     it("Agrego dos monstruos en la habitación y un investigador y le pregunto por el size de monstruos y denota 2") {
       val investigador = new Investigador(10, 20)

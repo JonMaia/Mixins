@@ -1,11 +1,12 @@
 package clases
 
 import mixins.sanador.Sanador
-import mixins.{Luchador, Personaje}
+import mixins.Personaje
+import mixins.luchador.Luchador
 
 import scala.util.Random
 
-class Investigador(vidaInicial: Int, val corduraInicial: Int) extends Personaje with Luchador with Sanador{
+class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Personaje with Luchador with Sanador {
 
   var estaLoco: Boolean = false
   override var vida: Int = vidaInicial
@@ -18,11 +19,11 @@ class Investigador(vidaInicial: Int, val corduraInicial: Int) extends Personaje 
   override def puntosACurar(): Int = 0
 
   override def danio(): Int = {
-    Random.nextInt(this.vida - 1) + 1
+    Random.nextInt(vida - 1) + 1
   }
 
   override def atacar(): Unit = {
-    habitacion.monstruoMasPoderoso().recibirDanio(danio)
+    habitacion.monstruoMasPoderoso().recibirDanio(danio())
   }
 
   def getEstaLoco(): Boolean = {
@@ -42,6 +43,10 @@ class Investigador(vidaInicial: Int, val corduraInicial: Int) extends Personaje 
     }
   }
 
+  def recuperarTodaLaCordura(): Unit = {
+    this.corduraActual = 100
+  }
+
   def recuperarCordura(cordura: Int) = {
     if(this.corduraActual + cordura <= this.corduraInicial) {
       this.corduraActual += cordura
@@ -50,4 +55,10 @@ class Investigador(vidaInicial: Int, val corduraInicial: Int) extends Personaje 
     }
   }
 
+  override def entrarEnHabitacion(habitacion: Habitacion): Unit = {
+    super.entrarEnHabitacion(habitacion)
+    habitacion.monstruos().foreach(monstruo => monstruo.ocacionarHorror(this))
+  }
+
 }
+

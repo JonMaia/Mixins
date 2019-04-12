@@ -1,4 +1,6 @@
-package mixins
+package mixins.luchador
+
+import mixins.Personaje
 
 trait Luchador extends Personaje {
 
