@@ -4,7 +4,7 @@ import org.scalatest.{FunSpec, Matchers}
 class HabitacionSpec extends FunSpec with Matchers {
   describe("clases.Habitacion.agregarPersonaje(personaje)") {
     it("Agrego dos personajes en la habitación y personajes tiene size 2") {
-      val investigador = new Investigador(10)
+      val investigador = new Investigador(10, 20)
       val monstruo = new Monstruo(20)
       val habitacion = new Habitacion
 
@@ -19,7 +19,7 @@ class HabitacionSpec extends FunSpec with Matchers {
   describe("clases.Habitacion.monstruos()") {
 
     it("Agrego dos monstruos en la habitación y un investigador y le pregunto por el size de monstruos y denota 2") {
-      val investigador = new Investigador(10)
+      val investigador = new Investigador(10, 20)
       val monstruo1 = new Monstruo(20)
       val monstruo2 = new Monstruo(23)
       val habitacion = new Habitacion
@@ -35,8 +35,8 @@ class HabitacionSpec extends FunSpec with Matchers {
 
     it("Agrego dos investigadores en la habitación y un monstruo y le pregunto por el size de investigadores y " +
       "denota 2") {
-      val investigador1 = new Investigador(10)
-      val investigador2 = new Investigador(11)
+      val investigador1 = new Investigador(10, 20)
+      val investigador2 = new Investigador(11, 20)
       val monstruo = new Monstruo(23)
       val habitacion = new Habitacion
       val listaDeInvestigadores = List(investigador1, investigador2)
@@ -51,7 +51,7 @@ class HabitacionSpec extends FunSpec with Matchers {
 
     it("Agrego un investigador y dos monstruos (monstruo1 con 20 de vida y mostruo2 con 30 de vida) en la habitación " +
       "y pregunto por el monstruo más poderoso y retorna monstruo 2") {
-      val investigador = new Investigador(10)
+      val investigador = new Investigador(10, 20)
       val monstruo1 = new Monstruo(20)
       val monstruo2 = new Monstruo(30)
       val habitacion = new Habitacion
@@ -61,6 +61,24 @@ class HabitacionSpec extends FunSpec with Matchers {
       habitacion.agregarHabitante(monstruo2)
 
       habitacion.monstruoMasPoderoso() shouldEqual monstruo2
+    }
+  }
+
+  describe("clases.habitacion.investigadores()") {
+
+    it("Hay 2 investigadores en la habitacion y entra un monstruo que ocaciona 1 de horror a ambos, entonces se reduce" +
+      "su cordura en 1 punto cada uno") {
+      val investigador = new Investigador(10, 20)
+      val investigador2 = new Investigador(10, 20)
+      val monstruo1 = new Monstruo(23)
+      val habitacion = new Habitacion
+
+      habitacion.agregarHabitante(monstruo1)
+
+      habitacion.investigadores().map(investigador => investigador.recibirHorror(monstruo1.horror))
+
+      investigador.getCorduraActual() equals(19)
+      investigador2.getCorduraActual() equals(19)
     }
   }
 }

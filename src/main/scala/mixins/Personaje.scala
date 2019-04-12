@@ -3,6 +3,7 @@ package mixins
 import clases.Habitacion
 
 trait Personaje {
+
   var vida :Int
   var habitacion :Habitacion = _
 
@@ -16,6 +17,10 @@ trait Personaje {
 
   def estaMuerto(): Boolean ={
     vida == 0
+  }
+
+  def entrarEnHabitacion(habitacion: Habitacion): Unit = {
+    habitacion.agregarHabitante(this)
   }
 
 }

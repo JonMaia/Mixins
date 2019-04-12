@@ -2,7 +2,8 @@ package clases
 
 import mixins.{Luchador, Personaje}
 
-class Monstruo(vidaInicial :Int) extends Personaje with Luchador {
+class Monstruo(vidaInicial :Int, var horror: Int = 1) extends Personaje with Luchador {
+
   override var vida: Int = vidaInicial
 
   override def danio(): Int = 1
@@ -10,4 +11,14 @@ class Monstruo(vidaInicial :Int) extends Personaje with Luchador {
   override def atacar(): Unit = {
     habitacion.investigadores().head.recibirDanio(danio())
   }
+
+  def ocacionarHorror(investigador: Investigador) = {
+    investigador.recibirHorror(this.horror)
+  }
+
+  override def entrarEnHabitacion(habitacion: Habitacion): Unit = {
+    super.entrarEnHabitacion(habitacion)
+    habitacion.investigadores().foreach(investigador => this.ocacionarHorror(investigador))
+  }
+
 }
