@@ -2,7 +2,9 @@ import clases.{Habitacion, Investigador, Monstruo}
 import org.scalatest.{FunSpec, Matchers}
 
 class InvestigadorSpec extends FunSpec with Matchers {
+
   describe("clases.Investigador.atacar(monstruo)") {
+
     it("Un investigador ataca a un monstruo y le ocaciona danio") {
       val investigador = new Investigador(10, 20)
       val monstruo = new Monstruo(20)
