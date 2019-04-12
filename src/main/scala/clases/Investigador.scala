@@ -1,6 +1,7 @@
 package clases
 
-import mixins.{Luchador, Personaje, Sanador}
+import mixins.sanador.Sanador
+import mixins.{Luchador, Personaje}
 
 import scala.util.Random
 

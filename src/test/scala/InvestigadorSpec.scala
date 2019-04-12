@@ -1,5 +1,6 @@
 import clases.{Habitacion, Investigador, Monstruo}
-import mixins.{Curandero, Luchador, Martir}
+import mixins.sanador.{Curandero, Martir}
+import mixins.Luchador
 import org.scalatest.{FunSpec, Matchers}
 
 class InvestigadorSpec extends FunSpec with Matchers {

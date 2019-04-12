@@ -1,5 +1,11 @@
 package mixins.sanador
 
-trait Sanador {
+import mixins.Personaje
+
+trait Sanador extends Personaje {
+
+  def curar(personaje: Personaje): Unit
+
+  def puntosACurar(): Int
 
 }
