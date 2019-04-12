@@ -1,6 +1,6 @@
 package mixins
 
-trait Luchador {
+trait Luchador extends Personaje {
 
   def atacar(): Unit
 

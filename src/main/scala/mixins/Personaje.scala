@@ -11,4 +11,8 @@ trait Personaje {
     this.vida -= danio
   }
 
+  def recibirCuracion(curacion: Int): Unit = {
+    this.vida += curacion
+  }
+
 }
