@@ -3,7 +3,7 @@ package clases
 import mixins.{Luchador, Personaje}
 import scala.util.Random
 
-class Investigador(vidaInicial: Int, val corduraInicial: Int) extends Personaje with Luchador {
+class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Personaje with Luchador {
 
   var estaLoco: Boolean = false
   override var vida: Int = vidaInicial
@@ -43,3 +43,4 @@ class Investigador(vidaInicial: Int, val corduraInicial: Int) extends Personaje 
   }
 
 }
+
