@@ -2,7 +2,9 @@ import clases.{Habitacion, Investigador, Monstruo}
 import org.scalatest.{FunSpec, Matchers}
 
 class InvestigadorSpec extends FunSpec with Matchers {
+
   describe("clases.Investigador.atacar(monstruo)") {
+
     it("Un investigador ataca a un monstruo y le ocaciona danio") {
       val investigador = new Investigador(10, 20)
       val monstruo = new Monstruo(20)
@@ -33,25 +35,25 @@ class InvestigadorSpec extends FunSpec with Matchers {
       monstruo.vida < 20 shouldBe true
     }
 
-    describe("clases.Investigador.estaLoco()") {
-      it("Dado un Investigador le pregunto si se encuentra Loco y me responde que no") {
+    it("Un investigador es atacado, se muere y es retirado de la habitación"){
+      val investigador = new Investigador(1, 20)
+      val monstruo = new Monstruo(20)
+      val habitacion = new Habitacion
 
-        val investigador = new Investigador(10, 20)
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(monstruo)
 
-        investigador.getEstaLoco() shouldBe false
+      habitacion.personajes.size shouldEqual 2
+      habitacion.investigadores().size shouldEqual 1
 
-      }
+      monstruo.atacar()
 
-      it("Dado un Investigador que recibe horror y su corduraActual se reduce a 0, cuando le pregunto si esta loco me" +
-      "dice que si") {
+      habitacion.personajes.size shouldEqual 1
+      habitacion.investigadores().size shouldEqual 0
+    }
 
-        val investigador = new Investigador(10,5)
-
-        investigador.recibirHorror(5)
-
-        investigador.getEstaLoco() shouldBe true
-
-      }
+  }
+  describe("Investigador.recibirHorror()") {
 
       it("Dado un Investigador que recibe horror y su corduraActual se reduce en 5 puntos, cuando le pregunto si esta" +
         "loco me dice que no") {
@@ -88,6 +90,5 @@ class InvestigadorSpec extends FunSpec with Matchers {
         investigador.getCorduraActual() shouldBe 10
 
       }
-    }
   }
 }

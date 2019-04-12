@@ -10,11 +10,11 @@ class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Person
   var corduraActual: Int = corduraInicial
 
   override def danio(): Int = {
-    Random.nextInt(this.vida - 1) + 1
+    Random.nextInt(vida - 1) + 1
   }
 
   override def atacar(): Unit = {
-    habitacion.monstruoMasPoderoso().recibirDanio(danio)
+    habitacion.monstruoMasPoderoso().recibirDanio(danio())
   }
 
   def getEstaLoco(): Boolean = {
@@ -34,12 +34,21 @@ class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Person
     }
   }
 
+  def recuperarTodaLaCordura(): Unit = {
+    this.corduraActual = 100
+  }
+
   def recuperarCordura(cordura: Int) = {
     if(this.corduraActual + cordura <= this.corduraInicial) {
       this.corduraActual += cordura
     } else {
       this.corduraActual = this.corduraInicial
     }
+  }
+
+  override def entrarEnHabitacion(habitacion: Habitacion): Unit = {
+    super.entrarEnHabitacion(habitacion)
+    habitacion.monstruos().foreach(monstruo => monstruo.ocacionarHorror(this))
   }
 
 }

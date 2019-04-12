@@ -5,7 +5,7 @@ import mixins.Personaje
 class Habitacion {
   var personajes :List[Personaje] = List()
 
-  def agregarHabitante(personaje: Personaje) = {
+  def agregarHabitante(personaje: Personaje): Unit = {
     personaje.habitacion = this
     personajes = personajes :+ personaje
   }
@@ -21,6 +21,10 @@ class Habitacion {
   // Retorna al monstruo con más puntos de vida que esta en la habitación.
   def monstruoMasPoderoso(): Monstruo = {
     monstruos().maxBy(monstruo => monstruo.vida)
+  }
+
+  def retirarPersonaje(): Unit = {
+    personajes = personajes.filterNot(p => p.estaMuerto())
   }
 
 }
