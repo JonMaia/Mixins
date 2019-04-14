@@ -4,7 +4,7 @@ import clases.Habitacion
 
 trait Personaje {
 
-  var vida :Int
+  var vida: Int
   var habitacion :Habitacion = _
 
   def recibirDanio(danio :Int): Unit = {

@@ -25,7 +25,7 @@ class InvestigadorBarserkerSpec extends FunSpec with Matchers {
       habitacion.agregarHabitante(monstruo)
 
       investigador.recibirHorror(20)
-      investigador.getEstaLoco() shouldBe true
+      investigador.estaLoco() shouldBe true
 
       investigador.atacar()
 

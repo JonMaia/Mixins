@@ -7,19 +7,21 @@ class Monstruo(vidaInicial :Int, var horror: Int = 1) extends Personaje with Luc
 
   override var vida: Int = vidaInicial
 
+  //Propósito: cuando un mostruo ataca siempre ocaciona 1 de daño.
   override def danio(): Int = 1
 
-  override def atacar(): Unit = {
-    habitacion.investigadores().head.recibirDanio(danio())
-  }
-
-  def ocacionarHorror(investigador: Investigador) = {
+  def ocacionarHorror(investigador: Investigador): Unit = {
     investigador.recibirHorror(this.horror)
   }
 
   override def entrarEnHabitacion(habitacion: Habitacion): Unit = {
     super.entrarEnHabitacion(habitacion)
     habitacion.investigadores().foreach(investigador => this.ocacionarHorror(investigador))
+  }
+
+  //Propósito: Selecciona al primer investigador, que se encuentre en la misma habitación que él, como oponente.
+  override def oponente(): Personaje = {
+    habitacion.investigadores().head
   }
 
 }
