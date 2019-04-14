@@ -4,7 +4,7 @@ import clases.Investigador
 
 trait Cobarde extends Investigador{
   override def atacar(): Unit = {
-    this.habitacion.monstruoMasPoderoso().recibirDanio(this.danio())
+    super.atacar()
     this.recibirHorror(1)
   }
 }

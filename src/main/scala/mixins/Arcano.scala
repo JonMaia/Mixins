@@ -24,7 +24,7 @@ trait Arcano extends Monstruo {
   override def ocacionarHorror(investigador: Investigador): Unit = {
 
     if(MansionesUtils.randomIntBetween(0,3) == 0) {
-      investigador.recibirHorror(investigador.corduraActual)
+      investigador.recibirHorror(investigador.corduraActual) // funcion volver loco
     } else {
       super.ocacionarHorror(investigador)
     }
