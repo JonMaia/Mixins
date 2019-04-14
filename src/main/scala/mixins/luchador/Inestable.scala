@@ -1,4 +1,4 @@
-package mixins
+package mixins.luchador
 
 import clases.Investigador
 

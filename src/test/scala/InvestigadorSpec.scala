@@ -1,4 +1,6 @@
 import clases.{Habitacion, Investigador, Monstruo}
+import mixins.luchador.Luchador
+import mixins.sanador.{Curandero, Martir}
 import org.scalatest.{FunSpec, Matchers}
 
 class InvestigadorSpec extends FunSpec with Matchers {
@@ -89,6 +91,35 @@ class InvestigadorSpec extends FunSpec with Matchers {
         investigador.getEstaLoco() shouldBe false
         investigador.getCorduraActual() shouldBe 10
 
+      }
+    }
+
+    describe("clases.Investigador.Curandero.curar()") {
+      it("Dado un Investigador-Curandero cura 2 puntos de vida a un Investigador dañado con 8 de vida, de 10") {
+
+        val curandero = new Investigador(10, 20) with Curandero
+        val investigador = new Investigador(10, 20)
+
+        investigador.recibirDanio(2)
+        curandero.curar(investigador)
+
+        investigador.vida shouldBe 10
+
+      }
+    }
+
+    describe("clases.Investigador.Martir.curar()") {
+      it("Dado un Investigador-Martir cura 4 puntos de cordura a un Investigador loco, entonces el Investigador-Martir"+
+      "perdería 2 puntos de salud") {
+
+        val martir = new Investigador(10, 20) with Martir
+        val investigador = new Investigador(10, 10) with Luchador
+
+        investigador.recibirHorror(10)
+        martir.curar(investigador)
+
+        investigador.getCorduraActual() shouldBe 4
+        martir.vida shouldBe 8
       }
   }
 }

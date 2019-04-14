@@ -1,6 +1,7 @@
 package clases
 
-import mixins.{Luchador, Personaje}
+import mixins.Personaje
+import mixins.luchador.Luchador
 
 class Monstruo(vidaInicial :Int, var horror: Int = 1) extends Personaje with Luchador {
 

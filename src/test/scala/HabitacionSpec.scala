@@ -1,4 +1,5 @@
 import clases.{Habitacion, Investigador, Monstruo}
+import mixins.luchador.Bestia
 import org.scalatest.{FunSpec, Matchers}
 
 class HabitacionSpec extends FunSpec with Matchers {
@@ -69,18 +70,39 @@ class HabitacionSpec extends FunSpec with Matchers {
   describe("clases.habitacion.investigadores()") {
 
     it("Hay 2 investigadores en la habitacion y entra un monstruo que ocaciona 1 de horror a ambos, entonces se reduce" +
-      "su cordura en 1 punto cada uno") {
+      "su cordura en 1 punto a cada uno") {
       val investigador = new Investigador(10, 20)
       val investigador2 = new Investigador(10, 20)
       val monstruo1 = new Monstruo(23)
       val habitacion = new Habitacion
 
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(investigador2)
       habitacion.agregarHabitante(monstruo1)
 
       habitacion.investigadores().map(investigador => investigador.recibirHorror(monstruo1.horror))
 
       investigador.getCorduraActual() equals(19)
       investigador2.getCorduraActual() equals(19)
+    }
+  }
+
+  describe("clases.habitacion.investigadores().recibirDanio()") {
+
+    it("Hay 2 investigadores y un monstruo-bestia en una habitacion, cuando el monstruo ataca escoge al mas debil de los" +
+      "2 investigadores y le inflige 1 de daño ya que se encuentra solo") {
+      val investigador = new Investigador(4, 20)
+      val investigador2 = new Investigador(10, 20)
+      val bestia = new Monstruo(23) with Bestia
+      val habitacion = new Habitacion
+
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(investigador2)
+      habitacion.agregarHabitante(bestia)
+
+      bestia.atacar()
+
+      investigador.vida equals(3)
     }
   }
 }

@@ -23,4 +23,8 @@ trait Personaje {
     habitacion.agregarHabitante(this)
   }
 
+  def recibirCuracion(curacion: Int): Unit = {
+    this.vida += curacion
+  }
+
 }

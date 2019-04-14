@@ -1,6 +1,6 @@
 import `object`.MansionesUtils
 import clases.{Habitacion, Investigador, Monstruo}
-import mixins.ArtistaMarcial
+import mixins.luchador.ArtistaMarcial
 import org.scalatest.{FunSpec, Matchers}
 
 class ArtistaMarcialSpec extends FunSpec with Matchers {

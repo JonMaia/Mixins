@@ -1,4 +1,5 @@
-package mixins
+package mixins.luchador
+
 import clases.Investigador
 
 trait Barserker  extends Investigador {

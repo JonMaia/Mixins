@@ -1,6 +1,6 @@
 package clases
 
-import mixins.Cobarde
+import mixins.luchador.Cobarde
 
 
 class InvestigadorCobarde(override val vidaInicial: Int,override val corduraInicial: Int)

@@ -1,5 +1,5 @@
 import clases.{Habitacion, Investigador, Monstruo}
-import mixins.Inestable
+import mixins.luchador.Inestable
 import org.scalatest.{FunSpec, Matchers}
 
 class InestableSpec extends FunSpec with Matchers {

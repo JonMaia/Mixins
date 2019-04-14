@@ -1,4 +1,4 @@
-package mixins
+package mixins.luchador
 
 import `object`.MansionesUtils
 import clases.Investigador

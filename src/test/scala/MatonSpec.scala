@@ -1,5 +1,5 @@
 import clases.{Habitacion, Investigador, Monstruo}
-import mixins.Maton
+import mixins.luchador.Maton
 import org.scalatest.{FunSpec, Matchers}
 
 class MatonSpec extends FunSpec with Matchers {

@@ -1,6 +1,7 @@
-package mixins
+package mixins.luchador
 
 import clases.Investigador
+import mixins.Personaje
 
 /** Si luego de un ataque consigue matar al oponente, el matón ganará confianza y recuperará toda su cordura */
 trait Maton extends Investigador{

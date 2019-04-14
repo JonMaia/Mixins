@@ -1,13 +1,22 @@
 package clases
 
-import mixins.{Luchador, Personaje}
+import mixins.sanador.Sanador
+import mixins.Personaje
+import mixins.luchador.Luchador
+
 import scala.util.Random
 
-class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Personaje with Luchador {
+class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Personaje with Luchador with Sanador {
 
   var estaLoco: Boolean = false
   override var vida: Int = vidaInicial
   var corduraActual: Int = corduraInicial
+
+  override def curar(personaje: Personaje): Unit = {
+    personaje.recibirCuracion(this.puntosACurar())
+  }
+
+  override def puntosACurar(): Int = 0
 
   override def danio(): Int = {
     Random.nextInt(vida - 1) + 1
