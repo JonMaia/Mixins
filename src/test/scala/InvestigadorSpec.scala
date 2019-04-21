@@ -1,6 +1,6 @@
 import `object`.MansionesUtils
 import clases.{Habitacion, Investigador, Monstruo}
-import mixins.luchador.Luchador
+import mixins.luchador.{Barserker, Cobarde, Luchador}
 import mixins.sanador.{Curandero, Martir}
 import org.scalatest.{FunSpec, Matchers}
 
@@ -142,4 +142,55 @@ class InvestigadorSpec extends FunSpec with Matchers {
         martir.vida shouldBe 8
       }
   }
+
+  describe("clases.InvestigadorBarserker.atacar(monstruo)") {
+    it("Un investigador cuerdo ataca a un monstruo y le ocaciona danio") {
+      val investigador = new Investigador(2, 20) with Barserker
+      val monstruo = new Monstruo(20)
+      val habitacion = new Habitacion
+
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(monstruo)
+
+      investigador.atacar()
+
+      monstruo.vida == 19 shouldBe true
+    }
+
+    it("Un investigador loco ataca a un monstruo y le ocaciona el doble danio") {
+      val investigador = new Investigador(2, 20) with Barserker
+      val monstruo = new Monstruo(20)
+      val habitacion = new Habitacion
+
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(monstruo)
+
+      investigador.recibirHorror(20)
+      investigador.estaLoco() shouldBe true
+
+      investigador.atacar()
+
+      monstruo.vida == 18 shouldBe true
+    }
+
+  }
+
+
+  describe("clases.InvestigadorCobarde.atacar(monstruo)") {
+    it("Un investigador ataca a un monstruo, le ocaciona danio y se auto dania") {
+      val corduraInicial = 20
+      val investigador = new Investigador(2, corduraInicial) with Cobarde
+      val monstruo = new Monstruo(20)
+      val habitacion = new Habitacion
+
+      habitacion.agregarHabitante(investigador)
+      habitacion.agregarHabitante(monstruo)
+
+      investigador.atacar()
+
+      monstruo.vida == 19 shouldBe true
+      investigador.getCorduraActual() shouldBe corduraInicial-1
+    }
+  }
+
 }
