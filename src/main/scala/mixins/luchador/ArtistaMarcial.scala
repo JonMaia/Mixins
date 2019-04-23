@@ -6,7 +6,7 @@ import clases.Investigador
 /** Al atacar ocaciona un 50% más de daño. */
 trait ArtistaMarcial extends Investigador {
 
-  override def danio(): Int = {
+  override def danio(): Double = {
 
     if(MansionesUtils.state) {
       MansionesUtils.roundInt(MansionesUtils.danioControlable() * 1.5)

@@ -8,7 +8,7 @@ trait Luchador extends Personaje {
     this.oponente().recibirDanio(this.danio())
   }
 
-  def danio(): Int
+  def danio(): Double
 
 
   def oponente(): Personaje

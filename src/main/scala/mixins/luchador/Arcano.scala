@@ -5,7 +5,7 @@ import clases.{Investigador, Monstruo}
 
 trait Arcano extends Monstruo {
 
-  override def danio(): Int = {
+  override def danio(): Double = {
     calcularDanio()
   }
 

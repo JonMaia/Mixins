@@ -9,7 +9,7 @@ trait Bestia extends Monstruo with Luchador {
     masDebil.recibirDanio(danio())
   }
 
-  override def danio(): Int = {
+  override def danio(): Double = {
     habitacion.monstruos().size
   }
 
