@@ -4,10 +4,10 @@ import clases.Habitacion
 
 trait Personaje {
 
-  var vida: Int
+  var vida: Double
   var habitacion :Habitacion = _
 
-  def recibirDanio(danio :Int): Unit = {
+  def recibirDanio(danio: Double): Unit = {
     this.vida -= danio
     if(vida <= 0) {
       vida = 0

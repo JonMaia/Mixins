@@ -7,9 +7,9 @@ import mixins.luchador.Luchador
 
 import scala.util.Random
 
-class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Personaje with Luchador with Sanador {
+class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Personaje with Luchador with Sanador {
 
-  var vida: Int = vidaInicial
+  var vida: Double = vidaInicial
   var corduraActual: Int = corduraInicial
 
   override def curar(personaje: Personaje): Unit = {
@@ -18,8 +18,8 @@ class Investigador(val vidaInicial: Int, val corduraInicial: Int) extends Person
 
   override def puntosACurar(): Int = 0
 
-  override def danio(): Int = {
-    Random.nextInt(vida - 1) + 1
+  override def danio(): Double = {
+    Random.nextInt((vida - 1).toInt) + 1
   }
 
   def estaLoco(): Boolean = {
