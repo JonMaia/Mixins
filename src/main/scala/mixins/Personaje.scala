@@ -16,7 +16,7 @@ trait Personaje {
   }
 
   def estaMuerto(): Boolean ={
-    vida == 0
+    vida <= 0
   }
 
   def entrarEnHabitacion(habitacion: Habitacion): Unit = {
