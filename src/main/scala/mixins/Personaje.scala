@@ -27,4 +27,6 @@ trait Personaje {
     this.vida += curacion
   }
 
+  def cantidadDeDanioPorHechizo(): Double
+
 }

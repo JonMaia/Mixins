@@ -67,5 +67,10 @@ class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Per
     }
   }
 
+  override def cantidadDeDanioPorHechizo(): Double = {
+    1/(this.corduraActual+1)
+  }
+
+
 }
 
