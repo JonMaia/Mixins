@@ -3,6 +3,7 @@ package mixins.arma
 import clases.{Arma, Investigador}
 
 trait ConArma extends Investigador {
+
   var arma :Arma = _
 
   def equiparArma(unArma :Arma): Unit = {
