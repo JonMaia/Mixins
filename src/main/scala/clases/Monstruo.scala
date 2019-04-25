@@ -24,4 +24,8 @@ class Monstruo(vidaInicial :Int, var horror: Int = 1) extends Personaje with Luc
     habitacion.investigadores().head
   }
 
+  override def cantidadDeDanioPorHechizo(): Double = {
+    1/this.vida
+  }
+
 }
