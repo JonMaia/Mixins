@@ -1,8 +1,5 @@
 package clases
 
-import mixins.Personaje
-import mixins.arma.ConArma
-
 class Arma {
   var danioInicial :Double = _
   var investigador :Investigador = _

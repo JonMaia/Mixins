@@ -5,7 +5,7 @@ import clases.Arma
 trait ArmaEsfuerzoFisico extends Arma  {
 
   override def danio(): Double = {
-    this.investigador.vida * 1.5
+    investigador.vida * 1.5
   }
 
 }
