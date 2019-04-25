@@ -1,13 +1,11 @@
 package mixins.arma
 
-import clases.Investigador
-import mixins.Personaje
+import clases.Arma
 
-trait ArmaEsfuerzoFisico extends Investigador {
+trait ArmaEsfuerzoFisico extends Arma  {
 
   override def danio(): Double = {
-    this.vida * 1.5
+    this.investigador.vida * 1.5
   }
-
 
 }
