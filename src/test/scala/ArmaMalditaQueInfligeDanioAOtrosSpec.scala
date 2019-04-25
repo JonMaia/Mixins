@@ -1,10 +1,11 @@
+import `object`.MansionesUtils
 import clases.{Habitacion, Investigador, Monstruo}
 import mixins.arma.ArmaMalditaQueInfligeDanioAOtros
 import org.scalatest.{FunSpec, Matchers}
 
 
 class ArmaMalditaQueInfligeDanioAOtrosSpec extends FunSpec with Matchers {
-
+  MansionesUtils.activar()
   describe("Investigador haciendo danio con un arma maldita que inflige danio a otros") {
     it("Un investigador de 3 de vida, ataca a un monstruo con 4 de vida, infligiendo 1 punto de danio al investigador" +
       "que se encuentra en la misma habitacion") {

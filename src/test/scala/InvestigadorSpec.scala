@@ -144,6 +144,7 @@ class InvestigadorSpec extends FunSpec with Matchers {
   }
 
   describe("clases.InvestigadorBarserker.atacar(monstruo)") {
+    MansionesUtils.activar()
     it("Un investigador cuerdo ataca a un monstruo y le ocaciona danio") {
       val investigador = new Investigador(2, 20) with Barserker
       val monstruo = new Monstruo(20)
@@ -154,7 +155,7 @@ class InvestigadorSpec extends FunSpec with Matchers {
 
       investigador.atacar()
 
-      monstruo.vida == 19 shouldBe true
+      monstruo.vida == 18 shouldBe true
     }
 
     it("Un investigador loco ataca a un monstruo y le ocaciona el doble danio") {
@@ -170,7 +171,7 @@ class InvestigadorSpec extends FunSpec with Matchers {
 
       investigador.atacar()
 
-      monstruo.vida == 18 shouldBe true
+      monstruo.vida == 16 shouldBe true
     }
 
   }
@@ -188,7 +189,7 @@ class InvestigadorSpec extends FunSpec with Matchers {
 
       investigador.atacar()
 
-      monstruo.vida == 19 shouldBe true
+      monstruo.vida == 18 shouldBe true
       investigador.getCorduraActual() shouldBe corduraInicial-1
     }
   }

@@ -1,11 +1,9 @@
 package clases
 
 import `object`.MansionesUtils
-import mixins.sanador.Sanador
 import mixins.Personaje
 import mixins.luchador.Luchador
-
-import scala.util.Random
+import mixins.sanador.Sanador
 
 class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Personaje with Luchador with Sanador {
 
@@ -19,7 +17,7 @@ class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Per
   override def puntosACurar(): Int = 0
 
   override def danio(): Double = {
-    Random.nextInt((vida - 1).toInt) + 1
+    MansionesUtils.randomIntBetween(1, this.vida.toInt).toDouble
   }
 
   def estaLoco(): Boolean = {

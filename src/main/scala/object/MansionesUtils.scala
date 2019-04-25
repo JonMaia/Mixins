@@ -4,11 +4,16 @@ import scala.util.Random
 
 object MansionesUtils {
   var state: Boolean = false
-  var low: Int = _
-  var high: Int = _
 
-  /** Retorna un entero aleatorio entre el rango dado [low - high] */
-  def randomIntBetween(low: Int, high: Int): Int = new Random().nextInt(high - low) + low
+  /** Retorna un entero aleatorio entre el rango dado [low - high] si es que el state es false, de lo contrario
+    * retorna el parametro high*/
+  def randomIntBetween(low: Int, high: Int): Int = {
+    if(!this.state) {
+      new Random().nextInt(high - low) + low
+    } else {
+      high
+    }
+  }
 
   /** Redondea un número decimal a entero */
   def roundInt(d: Double): Int = Math.round(d).asInstanceOf[Int]
@@ -30,7 +35,5 @@ object MansionesUtils {
   def desactivar(): Unit = {
     this.state = false
   }
-
-  def danioControlable(): Int = randomIntBetween(low, high)
 
 }
