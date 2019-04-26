@@ -3,18 +3,11 @@ package clases
 import `object`.MansionesUtils
 import mixins.Personaje
 import mixins.luchador.Luchador
-import mixins.sanador.Sanador
 
-class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Personaje with Luchador with Sanador {
+class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Personaje with Luchador {
 
   var vida: Double = vidaInicial
   var corduraActual: Int = corduraInicial
-
-  override def curar(personaje: Personaje): Unit = {
-    personaje.recibirCuracion(this.puntosACurar())
-  }
-
-  override def puntosACurar(): Int = 0
 
   override def danio(): Double = {
     MansionesUtils.randomIntBetween(1, this.vida.toInt).toDouble

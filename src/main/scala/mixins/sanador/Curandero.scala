@@ -2,12 +2,12 @@ package mixins.sanador
 
 import mixins.Personaje
 
-trait Curandero extends Sanador {
+trait Curandero extends Personaje {
 
-  override def curar(personaje: Personaje): Unit = {
-    personaje.recibirCuracion(this.puntosACurar())
+  def curar(personaje: Personaje): Unit = {
+     personaje.recibirCuracion(this.puntosACurar())
   }
 
-  override def puntosACurar(): Int = 2
+  def puntosACurar(): Int = 2
 
 }
