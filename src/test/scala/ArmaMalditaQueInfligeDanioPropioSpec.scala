@@ -19,7 +19,7 @@ class ArmaMalditaQueInfligeDanioPropioSpec extends FunSpec with Matchers {
 
       investigador.atacar()
 
-      monstruo.vida shouldBe 0.5
+      monstruo.vida shouldBe 2
       investigador.vida shouldBe 2
     }
 
