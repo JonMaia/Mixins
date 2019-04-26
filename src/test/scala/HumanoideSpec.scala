@@ -1,8 +1,9 @@
-import clases.{Arma, Habitacion, Investigador, Monstruo}
-import org.scalatest.{FunSpec, Matchers}
+import `object`.MansionesUtils
+import clases.{Arma, Habitacion, Investigador}
 import mixins.Humanoide
-import mixins.arma.{ArmaEsfuerzoFisico, ConArma}
 import mixins.arma.maldiciones.ArmaMalditaQueInfligeDanioPropio
+import mixins.arma.{ArmaEsfuerzoFisico, ConArma}
+import org.scalatest.{FunSpec, Matchers}
 
 class HumanoideSpec extends FunSpec with Matchers {
 
@@ -10,7 +11,7 @@ class HumanoideSpec extends FunSpec with Matchers {
 
     it("Un humanoide horroriza a un investigador con 10 pts de cordura") {
 
-      val humanoide = new Monstruo(20) with Humanoide
+      val humanoide = new Humanoide(20,10)
       val investigador = new Investigador(10, 10)
 
       humanoide.ocacionarHorror(investigador)
@@ -24,9 +25,9 @@ class HumanoideSpec extends FunSpec with Matchers {
   describe("clases.Humanoide.atacar(investigador)") {
 
     it("Un monstruo desarmado ataca a un investigador y lo dania en 1 punto") {
-
-      val humanoide = new Monstruo(20) with Humanoide
-      val investigador = new Investigador(10, 20)
+      MansionesUtils.activar()
+      val humanoide = new Humanoide(20, 10)
+      val investigador = new Investigador(30, 20)
       val habitacion = new Habitacion
 
       habitacion.agregarHabitante(humanoide)
@@ -34,14 +35,13 @@ class HumanoideSpec extends FunSpec with Matchers {
 
       humanoide.atacar()
 
-      investigador.vida shouldEqual 9
+      investigador.vida shouldEqual 10
     }
 
     it("Un monstruo con un bate ataca a un investigador y lo dania en 1 punto") {
 
       val bate = new Arma with ArmaEsfuerzoFisico with ArmaMalditaQueInfligeDanioPropio
-      val humanoide = new Monstruo(3) with Humanoide with ConArma
-      humanoide.cordura = 5
+      val humanoide = new Humanoide(3, 5) with ConArma
       val investigador = new Investigador(5, 20)
       val habitacion = new Habitacion
 

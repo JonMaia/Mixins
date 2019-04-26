@@ -30,4 +30,8 @@ class Habitacion {
   def investigadorConMenosCordura(): Investigador = {
     investigadores().minBy(investigador => investigador.corduraActual)
   }
+
+  def investigadorMasPoderoso(): Investigador = {
+    investigadores().maxBy(investigador => investigador.vida)
+  }
 }
