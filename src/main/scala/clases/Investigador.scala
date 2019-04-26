@@ -4,6 +4,7 @@ import `object`.MansionesUtils
 import mixins.Personaje
 import mixins.luchador.Luchador
 
+
 class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Personaje with Luchador {
 
   var vida: Double = vidaInicial
@@ -15,6 +16,10 @@ class Investigador(val vidaInicial: Double, val corduraInicial: Int) extends Per
 
   def estaLoco(): Boolean = {
     this.corduraActual == 0
+  }
+
+  def volverLoco(): Unit ={
+    this.corduraActual = 0
   }
 
   def getCorduraActual(): Int = {

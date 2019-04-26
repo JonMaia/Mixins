@@ -3,6 +3,7 @@ package clases
 import mixins.Personaje
 import mixins.luchador.Luchador
 
+
 class Monstruo(vidaInicial :Int, var horror: Int = 1) extends Personaje with Luchador {
 
   override var vida: Double = vidaInicial
