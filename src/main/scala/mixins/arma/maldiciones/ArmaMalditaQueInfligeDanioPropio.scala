@@ -5,7 +5,7 @@ import clases.{Arma}
 trait ArmaMalditaQueInfligeDanioPropio extends Arma{
 
   override def danio(): Double = {
-    investigador.recibirDanio(1)
+    personaje.recibirDanio(1)
     super.danio()
   }
 

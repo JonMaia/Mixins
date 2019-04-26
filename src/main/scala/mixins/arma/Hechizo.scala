@@ -7,7 +7,7 @@ trait Hechizo extends Arma {
   var danioFijo : Double = _
 
   override def danio(): Double = {
-    danioFijo*this.investigador.oponente().cantidadDeDanioPorHechizo()
+    danioFijo*this.personaje.oponente().cantidadDeDanioPorHechizo()
   }
 
 }

@@ -12,7 +12,10 @@ trait ArmaMalditaQueInfligeDanioAOtros extends Arma{
   }
 
   def daniarALosDemasInvestigadores(): Unit = {
-    investigador.habitacion.investigadores().foreach(investigador => investigador.recibirDanio(super.danio() * 0.1))
+
+    //personaje.habitacion.investigadores().foreach(investigador => investigador.recibirDanio(super.danio() * 0.1))
+    personaje.habitacion.investigadores().filter(investigador =>investigador != this.personaje)
+      .foreach(investigador => investigador.recibirDanio(super.danio() * 0.1))
   }
 
 }

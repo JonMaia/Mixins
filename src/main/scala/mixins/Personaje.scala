@@ -29,4 +29,8 @@ trait Personaje {
 
   def cantidadDeDanioPorHechizo(): Double
 
+  def oponente(): Personaje
+
+  def danio():Double
+
 }
