@@ -1,8 +1,10 @@
 package clases
 
+import mixins.Personaje
+
 class Arma {
   var danioInicial :Double = _
-  var investigador :Investigador = _
+  var personaje :Personaje = _
 
   def setDanio(unDanio :Double): Unit = {
     this.danioInicial = unDanio
@@ -12,8 +14,8 @@ class Arma {
     this.danioInicial
   }
 
-  def cargarInvestigador(unInvestigador :Investigador): Unit = {
-    this.investigador = unInvestigador
+  def cargarPersonaje(unPersonaje: Personaje): Unit = {
+    this.personaje = unPersonaje
   }
 
 }

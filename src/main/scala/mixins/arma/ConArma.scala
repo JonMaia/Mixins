@@ -2,12 +2,14 @@ package mixins.arma
 
 import clases.{Arma, Investigador}
 
-trait ConArma extends Investigador {
+import mixins.Personaje
+
+trait ConArma extends Personaje {
 
   var arma :Arma = _
 
   def equiparArma(unArma :Arma): Unit = {
-    unArma.cargarInvestigador(this)
+    unArma.cargarPersonaje(this)
     this.arma = unArma
   }
 
