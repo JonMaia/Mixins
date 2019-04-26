@@ -1,24 +1,27 @@
 package mixins
 
-import clases.{Investigador,Monstruo}
+import `object`.MansionesUtils
+import clases.Investigador
 
 
-trait Humanoide extends Monstruo{
+class Humanoide(vida: Int, cordura: Int) extends Investigador(vida, cordura) with ConHorror {
 
-  var cordura: Int = _
 
-  override def danio(): Double = {
-
-    super.danio()
+  override def oponente(): Personaje = {
+    if (!this.estaLoco()) {
+      this.habitacion.investigadorMasPoderoso()
+    } else {
+      MansionesUtils.randomElement(this.habitacion.personajes)
+    }
   }
 
 
   override def recibirDanio(danio: Double): Unit = {
-    this.cordura  -= 1
+    this.recibirHorror(1)
     super.recibirDanio(danio)
   }
 
+  override def ocacionarHorror(investigador: Investigador): Unit =  investigador.recibirHorror(this.horror())
 
-
-
+  override def horror(): Int = 1
 }
